@@ -1,4 +1,4 @@
-from monitor.watcher import Watcher
+from watcher import Watcher
 import time
 try:
     import configparser
@@ -9,7 +9,7 @@ except ImportError:
 def multi_watch(args):
     gens = []
     config = configparser.ConfigParser()
-    config.read('conf/monitor.conf')
+    config.read('/root/watchpig/monitor.conf')
     for name in config.sections():
         print('-----[%s]-----' % name)
         watch_dict = {}
