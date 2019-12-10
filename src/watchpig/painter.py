@@ -38,7 +38,7 @@ EMOJI = {
     "novaclient": u'🌏',
     "nova": u'🌟',
     "glance": u'💿',
-    "cinder": u'💾 ',
+    "cinder": u'💾',
 }
 
 
