@@ -2,6 +2,7 @@
 from watcher import Watcher
 from painter import paint
 import time
+import os
 
 try:
     import configparser
@@ -12,7 +13,11 @@ except ImportError:
 def multi_watch(args):
     gens = []
     config = configparser.ConfigParser()
-    config.read('/root/watchpig/monitor.conf')
+    watch_path = os.environ.get('WATCHPIG')
+    if watch_path is None:
+        print("WATCHPIG未提供")
+        return
+    config.read(watch_path)
     paint(u"程序启动::FOREGROUND::celeste||::EMOJI::pig||start...")
     for name in config.sections():
         paint(u'项目名称::FOREGROUND::celeste||%s::FOREGROUND::yellow||watching ...' % name)
