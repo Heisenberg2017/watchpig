@@ -20,7 +20,7 @@ monitor_parser.set_defaults(handle=api.multi_watch)
 def cmd():
     args = parser.parse_args()
     if hasattr(args, 'handle'):
-        print('run args %s' % args.handle)
+        # print('run args %s' % args.handle)
         args.handle(args)
     else:
         parser.print_help()
