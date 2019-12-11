@@ -129,7 +129,7 @@ class Watcher:
                 print_str = change_detail.filename[:mid_index] + change_detail.filename[mid_index:] + ' ' * (
                         max_len - len(change_detail.filename)) + split_str + symbol_str
 
-            paint(u'文件变更::FOREGROUND::celeste||::EMOJI::change||%s' % print_str)
+            paint(u'文件变更::FOREGROUND::celeste|| ::EMOJI::change|| %s' % print_str)
 
     def change_trace_with_new_file(self, f_path):
         self.file_map[f_path] = None
@@ -218,12 +218,12 @@ class Watcher:
         output_time = kwargs.get('output_time')
         cmd = kwargs.get('cmd')
         paint(u"::EMOJI::separator", repeat=100)
-        paint(u'项目名称::FOREGROUND::celeste||%s::FOREGROUND::yellow' % self.project)
+        paint(u'项目名称::FOREGROUND::celeste|| %s::FOREGROUND::yellow' % self.project)
         # self.output(u'目录：%s ' % self.filepath)
-        paint(u'执行时间::FOREGROUND::celeste||::EMOJI::time||%s::FOREGROUND::yellow' % output_time)
-        paint(u'执行命令::FOREGROUND::celeste||::EMOJI::run||%s::FOREGROUND::yellow' % cmd)
+        paint(u'执行时间::FOREGROUND::celeste|| ::EMOJI::time|| %s::FOREGROUND::yellow' % output_time)
+        paint(u'执行命令::FOREGROUND::celeste|| ::EMOJI::run|| %s::FOREGROUND::yellow' % cmd)
         status = u'::EMOJI::succeed' if not status else u'::EMOJI::failed'
-        paint(u'执行结果::FOREGROUND::celeste||%s||%s::FOREGROUND::yellow' % (status, output))
+        paint(u'执行结果::FOREGROUND::celeste|| %s|| %s::FOREGROUND::yellow' % (status, output))
         # self.output(u'执行输出：%s ' % output)
 
     def exec_command(self, cmd):

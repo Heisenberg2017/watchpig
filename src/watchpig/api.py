@@ -1,8 +1,10 @@
 # coding=utf-8
-from watcher import Watcher
-from painter import paint
 import time
 import os
+import re
+from watcher import Watcher
+from painter import paint
+from emoji_base import EMOJI_MAP
 
 try:
     import configparser
@@ -18,9 +20,9 @@ def multi_watch(args):
         print("WATCHPIG未提供")
         return
     config.read(watch_path)
-    paint(u"程序启动::FOREGROUND::celeste||::EMOJI::pig||start...")
+    paint(u"程序启动::FOREGROUND::celeste|| ::EMOJI::pig|| start...")
     for name in config.sections():
-        paint(u'项目名称::FOREGROUND::celeste||%s::FOREGROUND::yellow||watching ...' % name)
+        paint(u'项目名称::FOREGROUND::celeste|| %s::FOREGROUND::yellow|| watching ...' % name)
         watch_dict = {}
         for key, value in config[name].items():
             watch_dict[key] = value
@@ -31,3 +33,12 @@ def multi_watch(args):
         for g in gens:
             next(g)
         time.sleep(1)
+
+
+def search_emoji(args):
+    for name, emoji in EMOJI_MAP.items():
+        result = re.search(args.search, name, re.IGNORECASE)
+        if result:
+            start = result.start()
+            end = result.end()
+            paint("%s||%s::FOREGROUND::red||%s|| %s" % (name[:start], name[start:end], name[end:], emoji))

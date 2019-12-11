@@ -16,6 +16,13 @@ monitor_parser = subparsers.add_parser(
 
 monitor_parser.set_defaults(handle=api.multi_watch)
 
+emoji_parser = subparsers.add_parser(
+    'emoji', help=WATCH_HELP, formatter_class=argparse.RawTextHelpFormatter)
+
+emoji_parser.set_defaults(handle=api.search_emoji)
+
+emoji_parser.add_argument('--search', '-s', help='search emoji', dest='search', required=True)
+
 
 def cmd():
     args = parser.parse_args()

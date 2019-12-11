@@ -1,5 +1,7 @@
 # coding=utf-8
+from __future__ import print_function
 
+import re
 
 BACKGROUND = {
     "black": u"\033[40;37m{text}\033[0m",
@@ -35,7 +37,7 @@ EMOJI = {
     "translate": u'💬',
     "dashboard": u'🌏',
     "horizon": u'🌏',
-    "novaclient": u'🌏',
+    "novaclient": u'🌟',
     "nova": u'🌟',
     "glance": u'💿',
     "cinder": u'💾',
@@ -63,11 +65,7 @@ def paint(short_code, repeat=1):
     #     units.append(''.join(pre_process[:index+1]))
     for unit in units:
         result.append(_paint(*unit.split("::")))
-    print(' '.join(result) * repeat)
+    print(''.join(result) * repeat)
     # return ' '.join(result)
 
 
-
-if __name__ == '__main__':
-    demo = u'\u9879\u76ee\u540d\u79f0::FOREGROUND::celeste||::EMOJI::translate||openstack_dashboard_locale::FOREGROUND::yellow||watching ...'
-    print(paint(demo))
