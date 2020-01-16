@@ -41,6 +41,7 @@ EMOJI = {
     "nova": u'🌟',
     "glance": u'💿',
     "cinder": u'💾',
+    "gpucloud": u'🌈',
 }
 
 
